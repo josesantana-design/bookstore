@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 
+app.use(express.static(__dirname + '/client'));
 app.use(bodyParser.json());
 
 //Exports moduls
@@ -81,7 +82,7 @@ app.get('/api/books', function(req, res){
 //Get book
 
 app.get('/api/books:id', function(req, res){
-	Book.getBookById(req.params._id, function(err, books){
+	Book.getBookById(req.params._id, function(err, book){
 		if(err){
 			throw err;
 		}
